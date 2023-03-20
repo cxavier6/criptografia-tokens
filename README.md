@@ -2,7 +2,7 @@
 
 ## Criptografia
 
-Cifra
+Criptografia é a prática de proteger informações por meio do uso de algoritmos codificados, hashes e assinaturas. -- [AWS](https://aws.amazon.com/pt/what-is/cryptography/)
 
 ### Funções de hash
 
@@ -61,6 +61,10 @@ Desse modo, na assimétrica, tem duas chaves:
 ### Assinatura
 
 A assinatura é uma forma de validar a autoria de algo. Neste contexto, a **chave privada** é utilizada para criar a assinatura digital (que seria como a hash de um documento) e **chave pública** é utilizada para criar um novo documento e verificar a assinatura. Ou seja, é feito uma comparação entre o documento recebido e o documento gerado pela chave pública, de forma que os dois devem ser iguais para que seja válido.
+
+![image](https://user-images.githubusercontent.com/79461028/226415487-a759a822-b47c-4098-a07a-b18b50e7b6a7.png)
+
+Utilizando os métodos `generatePairSync`, `createSign` e `createVerify` do módulo `crypto`.
 
 ## Documentação
 
