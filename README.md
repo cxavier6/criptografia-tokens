@@ -66,6 +66,40 @@ A assinatura é uma forma de validar a autoria de algo. Neste contexto, a **chav
 
 Utilizando os métodos `generatePairSync`, `createSign` e `createVerify` do módulo `crypto`.
 
+### Sessões
+
+Sessão é a quantidade de tempo em que o usuário está autenticado e conectado a um serviço ou um sistema.
+
+O servidor cria um identificador único(ID) para notificar que o usuário está logado, depois vai guardar o valor desse ID e enviar para o usuário. O usuário, por sua vez, vai guardar esse ID seja por cookies ou local storage para quando realizar novas requisições ao servidor poder enviar apenas o ID e não precisar logar novamente.
+### Tokens
+
+O token gerado pelo servidor é enviado ao usuário no qual quando houver outra requisição esse token vai ser verificado pelo servidor.
+
+![image](https://cdn1.gnarususercontent.com.br/1/723333/747c3a63-c3b4-4c94-9cc3-55cb71c1013e.png)
+
+### Token JWT
+
+JWT significa **J**son **W**eb **T**oken. Possui a seguinte estrutura: Cabeçalho (header), Dados (payload) e Assinatura.
+
+```javascript
+//Cabeçalho
+{
+    "alg": "HS256",
+    "typ": "JWT"
+}
+//Dados
+{
+    "sub": "1234567890",
+    "name": "John Doe",
+    "curso": "Node.js",
+    "iat": "1516239022"
+}
+//Assinatura
+HMACSHA256(
+    base64UrlEncode(header) + "." + base64UrlEncode(payload), segredo
+)
+```
 ## Documentação
 
 - [Crypto (Node.js)](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options)
+- [JSON Web Tokens](https://jwt.io/introduction)
