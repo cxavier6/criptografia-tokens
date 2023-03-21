@@ -108,6 +108,27 @@ HMACSHA256(
 O token armazenado em `localStorage`ou `sessionStorage` é passível de ataque por qualquer código javascript que tenha acesso ao mesmo domínio que a aplicação está hospedada.
 
 A forma mais segura de armazenar token JWT é através do [Cookies HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies#cookies_secure_e_httponly).
+
+### Algoritmos criptográficos
+
+O `SHA256` é apenas um dos tipos de algoritmos criptográficos (função de hash) que realiza essa transformação de uma informação para um hash. Exemplo:
+
+```
+Hash MD4: 21fe772972efa7cadf3011782264b7df
+Hash SHA256: 7ed8e25695b2bfb3b54688584795790c06b127bbc35017b780c5d64c3d1a72f9
+```
+
+Utilizando o exemplo acima de uma hash simples podemos observar que hashes do mesmo conteúdo podem ter tamanhos diferentes.
+
+### Ataques criptográficos
+
+O **Ataque de Força Bruta** é relativamente simples. Um exemplo é um usuário ter um PIN de 4 dígitos numéricos e um usuário já conhecido pelo atacante. O ataque consiste em combinar todos os números possíveis de 4 dígitos e testá-los até encontrar a combinação escolhida pelo usuário.
+
+O **Ataque de Dicionário** é utilizado quando a senha é um campo de texto ou algo genérico. Quando o atacante já conhece o usuário, o ataque consiste em testar as possibilidades mais comuns e senhas fracas como `senha123`, `admin`, `123456`.
+
+O **Rainbow Table** resume-se em armazenar uma hash simples e não a senha em si. O ataque consiste em utilizar uma lista com várias *hashes* de senhas comuns e fracas - tal qual no ataque de dicionário. No caso de um vazamento ou acesso indevido de dados, o atacante vai comparar as hashes comprometidas com as hashes criadas por ele.
+
+
 ## Documentação
 
 - [Crypto (Node.js)](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options)
