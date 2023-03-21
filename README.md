@@ -99,6 +99,15 @@ HMACSHA256(
     base64UrlEncode(header) + "." + base64UrlEncode(payload), segredo
 )
 ```
+É importante ressaltar que não necessariamente todos os tokens são criptografados. O header e o payload do token JWT são codificados em `base64`, ou seja, pode ser facilmente decodificado. Neste caso, a parte da assinatura apenas verifica a autenticidade e integridade do token. A chave secreta é armazenada para evitar que outras pessoas assinem o token e não para impedir a leitura do conteúdo.
+
+[*Leitura de referência.*](https://www.brunobrito.net.br/jose-jwt-jws-jwe-jwa-jwk-jwks/)
+
+#### Segurança
+
+O token armazenado em `localStorage`ou `sessionStorage` é passível de ataque por qualquer código javascript que tenha acesso ao mesmo domínio que a aplicação está hospedada.
+
+A forma mais segura de armazenar token JWT é através do [Cookies HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies#cookies_secure_e_httponly).
 ## Documentação
 
 - [Crypto (Node.js)](https://nodejs.org/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options)
